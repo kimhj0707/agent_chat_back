@@ -55,7 +55,7 @@ source /home/ubuntu/miniconda/bin/activate
 
 # Nginx 설정
 echo "Configuring Nginx..."
-sudo bash -c 'cat > /etc/nginx/sites-available/myapp <<EOF
+sudo bash -c "cat > /etc/nginx/sites-available/myapp <<EOF
 server {
     listen 80;
     server_name _;
@@ -64,12 +64,12 @@ server {
         proxy_pass http://127.0.0.1:8000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection "upgrade";
+        proxy_set_header Connection \"upgrade\";
         proxy_set_header Host \$host;
         proxy_cache_bypass \$http_upgrade;
     }
 }
-EOF'
+EOF"
 
 # Nginx 설정 심볼릭 링크 생성
 sudo ln -sf /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
